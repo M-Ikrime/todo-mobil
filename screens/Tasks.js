@@ -46,14 +46,3 @@ const Tasks = ({navigation}) => {
   );
 };
 export default Tasks;
-
-/** 
- * <TodoCategory title={'School'} />
-      <TodoCategory title={'Home'} />
-      <TodoCategory title={'Business'} />
-      <TodoCategory title={'Trip'} />
-      <View style={task.addBtn}>
-        <Button label={'Add Task'} />
-      </View>
- * 
-*/

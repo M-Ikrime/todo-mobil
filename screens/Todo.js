@@ -6,9 +6,8 @@ import {todo} from '../styles/screens';
 import {Button} from '../components';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {Component} from 'react';
 
-const Todo = ({props}) => {
+const Todo = () => {
   const [postDetail, setPostDetail] = useState([]);
   useEffect(() => {
     axios
