@@ -7,12 +7,16 @@ import {Button} from '../components';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
-const Todo = () => {
+const Todo = ({route}) => {
   const [postDetail, setPostDetail] = useState([]);
   useEffect(() => {
+    const {id} = route.params;
+
     axios
-      .get(`http://192.168.56.1:5000/api/posts/`)
-      .then(response => setPostDetail(response.data))
+      .get(`http://192.168.56.1:5000/api/posts/${id}`)
+      .then(response => {
+        setPostDetail(response.data);
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -20,9 +24,9 @@ const Todo = () => {
 
   return (
     <View style={todo.container}>
-      <Text style={todo.title}>Todo</Text>
+      <Text style={todo.title}>{postDetail.title}</Text>
       <View style={todo.todoContainer}>
-        <Text style={todo.todoText}>asdafsd</Text>
+        <Text style={todo.todoText}>{postDetail.content}</Text>
       </View>
       <View style={todo.deleteBtn}>
         <Button label={'Delete'} />

@@ -31,7 +31,7 @@ const Tasks = ({navigation}) => {
             <TodoCategory
               key={post._id}
               title={post.title}
-              btnClick={() => navigation.navigate('Todo')}
+              btnClick={() => navigation.navigate('Todo', {id: post._id})}
             />
           );
         })}
