@@ -7,6 +7,7 @@ const button = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 15,
   },
   label: {
     color: 'white',

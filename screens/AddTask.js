@@ -8,9 +8,11 @@ import axios from 'axios';
 //Components Import
 import {Button} from '../components';
 import {useEffect, useState} from 'react';
-const AddTask = ({navigation}) => {
-  const [title, setTitle] = useState({text: ''});
-  const [content, setContent] = useState({text: ''});
+const AddTask = ({route, navigation}) => {
+  const [title, setTitle] = useState(['']);
+  const [content, setContent] = useState(['']);
+
+  useEffect(() => {}, []);
 
   const newPost = () => {
     const body = {
@@ -18,10 +20,7 @@ const AddTask = ({navigation}) => {
       content: content,
     };
     axios
-      .post('http://192.168.56.1:5000/api/posts', {
-        title: title,
-        content: content,
-      })
+      .post('http://192.168.56.1:5000/api/posts', body)
       .then(data => {
         console.log(data);
       })
@@ -35,16 +34,19 @@ const AddTask = ({navigation}) => {
       <TextInput
         placeholder="Title"
         style={addTask.titleInput}
-        onChange={val => setTitle(val)}></TextInput>
+        onChangeText={val => setTitle(val)}></TextInput>
       <TextInput
         multiline={true}
         numberOfLines={15}
         textAlignVertical={'top'}
         placeholder="Todo"
         style={addTask.todoInput}
-        onChange={val => setContent(val)}></TextInput>
+        onChangeText={val => setContent(val)}></TextInput>
       <View style={addTask.btn}>
-        <Button label={'AddTask'} btnClick={() => newPost()} />
+        <Button
+          label={'AddTask'}
+          btnClick={() => navigation.navigate('Tasks', newPost())}
+        />
       </View>
     </View>
   );

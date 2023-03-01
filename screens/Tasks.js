@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import axios from 'axios';
 
 //Components Import
@@ -9,7 +9,6 @@ import {Search, TodoCategory, Button} from '../components';
 import {task} from '../styles/screens';
 
 import {useEffect} from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const Tasks = ({navigation}) => {
   const [posts, setPosts] = useState([]);
@@ -38,7 +37,7 @@ const Tasks = ({navigation}) => {
       </ScrollView>
       <View style={task.btnContainer}>
         <Button
-          label={'Ekleme'}
+          label={'AddTask'}
           btnClick={() => navigation.navigate('AddTask')}
         />
       </View>
